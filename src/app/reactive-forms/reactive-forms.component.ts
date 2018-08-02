@@ -11,12 +11,12 @@ import { Validators } from '@angular/forms';
 export class ReactiveFormsComponent implements OnInit {
 
   userList:User[]=[];
-
+  gender=['Male','Female'];
   form: FormGroup;
   constructor(private routes:Router) { }
   addUser(form){
     localStorage.setItem("data",JSON.stringify(this.form.value));
-    this.userList.push(this.form.value);
+    
     this.routes.navigate(['/table']);
   }
 
@@ -26,11 +26,13 @@ export class ReactiveFormsComponent implements OnInit {
     this.form=new FormGroup({
       name: new FormControl('',[Validators.required,Validators.pattern('[A-Za-z]+')]),
       lname: new FormControl('',[Validators.required,Validators.pattern('[A-Za-z]+')]),
-      password:new FormControl('',[Validators.required,Validators.pattern('(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}'),Validators.maxLength(10)]),
+      gender: new FormControl('',[Validators.required]),
+      password:new FormControl('',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&]).{8,}')]),
       contact:new FormControl('',[Validators.required,Validators.pattern('[0-9]*'),Validators.minLength(10),Validators.maxLength(10)]),
-      email:new FormControl('',[Validators.required,Validators.email]),
+      confirmpassword:new FormControl('',[Validators.required]),
       eid:new FormControl('',[Validators.required,Validators.pattern('^(0|[1-9][0-9]*)$'),Validators.minLength(4)])
     })
+    
   }
 
 }
