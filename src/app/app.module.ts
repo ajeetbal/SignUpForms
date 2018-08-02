@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { TableComponent } from './table/table.component';
-
+import { StoreService } from './store.service';
 const Routes=[
   {
     path:"reactive-forms",
@@ -33,7 +33,7 @@ const Routes=[
     FormsModule,
     RouterModule.forRoot(Routes)
   ],
-  providers: [],
+  providers: [StoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

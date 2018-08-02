@@ -3,6 +3,8 @@ import {User} from '../user';
 import {FormGroup,FormControl} from '@angular/forms';
 import { Router} from '@angular/router';
 import { Validators } from '@angular/forms';
+import { StoreService } from '../store.service';
+
 @Component({
   selector: 'app-reactive-forms',
   templateUrl: './reactive-forms.component.html',
@@ -14,9 +16,12 @@ export class ReactiveFormsComponent implements OnInit {
   user;
   gender=['Male','Female'];
   form: FormGroup;
-  constructor(private routes:Router) { }
+  constructor(private store:StoreService,private routes:Router) { }
+  
+  
   addUser(form){
-    localStorage.setItem("data",JSON.stringify(this.form.value));
+    //localStorage.setItem("data",JSON.stringify(this.form.value));
+    this.store.fillform(this.form.value);
     this.routes.navigate(['/table']);
     
   }
@@ -33,10 +38,12 @@ export class ReactiveFormsComponent implements OnInit {
       confirmpassword:new FormControl('',[Validators.required]),
       eid:new FormControl('',[Validators.required,Validators.pattern('^(0|[1-9][0-9]*)$'),Validators.minLength(4)])
     })
-    if(JSON.parse( localStorage.getItem("data")))
-  {  
-      this.user=JSON.parse(localStorage.getItem("data"));
-      this.form.patchValue({
+   // if(JSON.parse( localStorage.getItem("data")))
+    if (this.store.emptyform())
+   {  
+     // this.user=JSON.parse(localStorage.getItem("data"));
+     this.user=this.store.emptyform();
+     this.form.patchValue({
         firstname:this.user.firstname,
         lastname:this.user.lastname,
         eid:this.user.eid,
@@ -46,15 +53,18 @@ export class ReactiveFormsComponent implements OnInit {
         gender:this.user.gender
       
       })
-    }      
+    } 
+    else{
+      console.log("adfc");
+    }     
     
     
-  
+/*
 window.onbeforeunload=function(){
-this.localStorage.clear();
+this.s.clear();
 return '';
 
-}
+}*/
   }
 
 
