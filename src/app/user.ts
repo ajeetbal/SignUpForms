@@ -1,9 +1,9 @@
 export interface User{
-    name:string,
+    firstname:string,
     password:string,
     contact:string,
     confirmpassword:string,
     eid:string
-    lname:string;
+    lastname:string;
     gender :any[];
 }
