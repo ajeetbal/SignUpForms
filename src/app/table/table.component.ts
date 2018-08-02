@@ -17,7 +17,12 @@ export class TableComponent implements OnInit {
 
 }
 move(){
+
   this.routes.navigate(['reactive-forms']);
+}
+done(){
+  
+  alert('Welcome'+ this.formvalue.firstname);
 }
 
   ngOnInit() {
