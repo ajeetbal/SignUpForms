@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { TableComponent } from './table/table.component';
 import { StoreService } from './store.service';
+import { BluecolorDirective } from './bluecolor.directive';
 const Routes=[
   {
     path:"reactive-forms",
@@ -25,7 +26,8 @@ const Routes=[
   declarations: [
     AppComponent,
     ReactiveFormsComponent,
-    TableComponent
+    TableComponent,
+    BluecolorDirective
   ],
   imports: [
     BrowserModule,

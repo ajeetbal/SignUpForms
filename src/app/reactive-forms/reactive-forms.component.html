@@ -1,6 +1,7 @@
 
 <div class="jombotron">
-<h1>Registration</h1>
+<h1 bluecolor>Registration</h1>
+<hr>
   <div class="container">
 <form novalidate [formGroup]="form" (ngSubmit)="addUser(form)">
   <div class="form-group">
@@ -17,6 +18,8 @@
             First Name will contain only characters.
           </div>
     </div>
+
+    
     <div class="form-group">
         <label for="lastname">
           Last Name
@@ -50,8 +53,10 @@
                 </div>
           </div>
 
+
+
           <div  class="form-group">
-              <label for="gender">Gender: </label>
+              <label for="gender">Gender </label>
               <select formControlName="gender" class="form-control">
                   <option value="Male">Male</option>
                   <option  value="Female">Female </option>
@@ -69,9 +74,12 @@
             <label for="password">
               password
             </label>
-            <input type="password" formControlName="password" [(ngModel)] ="password" class="form-control">
+            <input type= "{{toggle}}"  formControlName="password" [(ngModel)] ="password" class="form-control">
+            <span (click)="togglePasswordMode()" class="glyphicon glyphicon-eye-open"> </span>
+        
           </div>
-          <div *ngIf="form.get('password').invalid && form.get('password').touched" class="alert alert-danger">
+          
+                    <div *ngIf="form.get('password').invalid && form.get('password').touched" class="alert alert-danger">
               <div *ngIf="form.get('password').hasError('required')">
                   password is required.
                 </div>
@@ -86,9 +94,13 @@
               </label>
               <input type="password" [(ngModel)]="confirmpassword" formControlName="confirmpassword" class="form-control">
             </div>
-           <div *ngIf="form.get('confirmpassword').touched" class="alert alert-danger">
-            <div [hidden]="password==confirmpassword">
+           <div *ngIf="form.get('confirmpassword').touched">
+            <div [hidden]="password==confirmpassword" class="alert alert-danger">
               Password did not match.
+            </div>
+            <div *ngIf="form.get('confirmpassword').hasError('required')" class="alert alert-danger">
+              this field is required.
+
             </div>
             </div>
 
@@ -110,15 +122,7 @@
                 Employee Id must contain 4 digits.
             </div>
         </div>
-
-
-   
-
-
-  
-
-  
-  <button type="submit" name="button" [disabled]="form.invalid">Add User</button>
+  <button class="btn btn-primary" type="submit" name="button" [disabled]="form.invalid">Add User</button>
 </form>
 </div>
 </div>

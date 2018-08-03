@@ -11,9 +11,9 @@ import { StoreService } from '../store.service';
   styleUrls: ['./reactive-forms.component.css']
 })
 export class ReactiveFormsComponent implements OnInit {
-
   userList:User[]=[];
   user;
+  toggle:string='password';
   gender=['Male','Female'];
   form: FormGroup;
   constructor(private store:StoreService,private routes:Router) { }
@@ -25,6 +25,16 @@ export class ReactiveFormsComponent implements OnInit {
     this.routes.navigate(['/table']);
     
   }
+ 
+  togglePasswordMode() {   
+    if(this.toggle=='password')
+    {
+      this.toggle='text';
+    }
+    else{
+      this.toggle='password';
+    }
+ }
 
 
 
