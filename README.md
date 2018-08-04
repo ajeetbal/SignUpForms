@@ -1,3 +1,9 @@
+# Reactive Signup Form
+
+This is a Reactive Registration Form which collects the important primary information about User And after the successful registration it shos all the information on a dashboard. In that dashboard , there is an option for Edit the information .
+
+<br>
+<img height="700" src="https://github.com/ajeetbal/SignUpForms/blob/master/register.png">
 # Reactive
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
