@@ -1,128 +1,123 @@
-
-<div class="jombotron">
-<h1 bluecolor>Registration</h1>
-<hr>
+<div class="jombotron ">
+  <div id="logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKVYZiOwjxbGDMX1KqJC6ATm9rpsPWNs9svBV9FzmnYqc2xyINLw" width="100px" height="100px">
+ REGISTRATION </div> 
+    <hr>
   <div class="container">
-<form novalidate [formGroup]="form" (ngSubmit)="addUser(form)">
-  <div class="form-group">
-    <label for="firstname">
-     First Name
-    </label>
-    <input type="text" formControlName="firstname" class="form-control">
-  </div>
-  <div *ngIf="form.get('firstname').invalid && form.get('firstname').touched" class="alert alert-danger">
-      <div *ngIf="form.get('firstname').hasError('required')">
+    <form novalidate [formGroup]="form" (ngSubmit)="addUser(form)">
+      <div class="form-group">
+        <label for="firstname">
+          First Name
+        </label>
+        <input type="text" formControlName="firstname" class="form-control form-control1">
+      </div>
+      <div *ngIf="form.get('firstname').invalid && form.get('firstname').touched" class="alert alert-danger">
+        <div *ngIf="form.get('firstname').hasError('required')">
           First Name is required.
         </div>
         <div *ngIf="form.get('firstname').hasError('pattern')">
-            First Name will contain only characters.
-          </div>
-    </div>
+          First Name will contain only characters.
+        </div>
+      </div>
 
-    
-    <div class="form-group">
+
+      <div class="form-group">
         <label for="lastname">
           Last Name
         </label>
-        <input type="text" formControlName="lastname" class="form-control">
+        <input type="text" formControlName="lastname" class="form-control form-control1">
       </div>
       <div *ngIf="form.get('lastname').invalid && form.get('lastname').touched" class="alert alert-danger">
-          <div *ngIf="form.get('lastname').hasError('required')">
-              Last Name is required.
-            </div>
-            <div *ngIf="form.get('lastname').hasError('pattern')">
-               Last Name will contain only characters.
-              </div>
+        <div *ngIf="form.get('lastname').hasError('required')">
+          Last Name is required.
         </div>
-
-        <div class="form-group">
-          <label for="contact">
-            Contact
-          </label>
-          <input type="text" formControlName="contact"  class="form-control" maxlength="10">
+        <div *ngIf="form.get('lastname').hasError('pattern')"> 
+          Last Name will contain only characters.
         </div>
-        <div *ngIf="form.get('contact').touched && form.get('contact').invalid" class="alert alert-danger">
-            <div *ngIf="form.get('contact').hasError('required')">
-              contact is required.
-            </div>
-            <div *ngIf="form.get('contact').hasError('minlength')">
-                Less than 10 digits.
-              </div>
-              <div *ngIf="form.get('contact').hasError('maxlength')">
-                  More than 10 digits.
-                </div>
-          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="contact">
+          Contact
+        </label>
+        <input type="text" formControlName="contact" class="form-control" maxlength="10">
+      </div>
+      <div *ngIf="form.get('contact').touched && form.get('contact').invalid" class="alert alert-danger">
+        <div *ngIf="form.get('contact').hasError('required')">
+          contact is required.
+        </div>
+        <div *ngIf="form.get('contact').hasError('minlength')">
+          Less than 10 digits.
+        </div>
+        <div *ngIf="form.get('contact').hasError('maxlength')">
+          More than 10 digits.
+        </div>
+      </div>
 
 
 
-          <div  class="form-group">
-              <label for="gender">Gender </label>
-              <select formControlName="gender" class="form-control">
-                  <option value="Male">Male</option>
-                  <option  value="Female">Female </option>
-              </select>
-          </div>
+      <div class="form-group">
+        <label for="gender">Gender </label>
+        <select formControlName="gender" class="form-control form-control1">
+          <option value="">Select....</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="password">
+          password
+        </label>
+        <input type="{{toggle1}}" formControlName="password" [(ngModel)]="password" class="form-control">
+        <i (click)="togglePasswordMode1()" class="glyphicon glyphicon-eye-open field-icon"></i>
+
+      </div>
+
+      <div *ngIf="form.get('password').invalid && form.get('password').touched" class="alert alert-danger">
+        <div *ngIf="form.get('password').hasError('required')">
+          password is required.
+        </div>
+        <div *ngIf="form.get('password').hasError('pattern')">
+          Minimum eight characters, at least one upper letter,one lower,one special char & one number.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmpassword">
+          Confirm Password
+        </label>
+        <input type="{{toggle2}}" [(ngModel)]="confirmpassword" formControlName="confirmpassword" class="form-control">
+        <i (click)="togglePasswordMode2()" class="glyphicon glyphicon-eye-open field-icon"></i>
+      </div>
+      <div *ngIf="form.get('confirmpassword').touched">
+        <div [hidden]="password==confirmpassword" class="alert alert-danger">
+          Password did not match.
+        </div>
+        <div *ngIf="form.get('confirmpassword').hasError('required')" class="alert alert-danger">
+          this field is required.
+
+        </div>
+      </div>
 
 
-
-
-
-
-
-      
-          <div class="form-group">
-            <label for="password">
-              password
-            </label>
-            <input type= "{{toggle}}"  formControlName="password" [(ngModel)] ="password" class="form-control">
-            <span (click)="togglePasswordMode()" class="glyphicon glyphicon-eye-open"> </span>
-        
-          </div>
-          
-                    <div *ngIf="form.get('password').invalid && form.get('password').touched" class="alert alert-danger">
-              <div *ngIf="form.get('password').hasError('required')">
-                  password is required.
-                </div>
-             <div *ngIf="form.get('password').hasError('pattern')">
-                Minimum eight characters, at least one upper letter,one lower,one special char & one number.
-                </div>
-            </div>
-    
-            <div class="form-group">
-              <label for="confirmpassword">
-                Confirm Password
-              </label>
-              <input type="password" [(ngModel)]="confirmpassword" formControlName="confirmpassword" class="form-control">
-            </div>
-           <div *ngIf="form.get('confirmpassword').touched">
-            <div [hidden]="password==confirmpassword" class="alert alert-danger">
-              Password did not match.
-            </div>
-            <div *ngIf="form.get('confirmpassword').hasError('required')" class="alert alert-danger">
-              this field is required.
-
-            </div>
-            </div>
-
-
-    <div class="form-group">
+      <div class="form-group">
         <label for="eid">
           EmployeeId
         </label>
-        <input type="text" formControlName="eid"  class="form-control" maxlength="4">
+        <input type="text" formControlName="eid" class="form-control" maxlength="4">
       </div>
       <div *ngIf="form.get('eid').invalid && form.get('eid').touched" class="alert alert-danger">
-          <div *ngIf="form.get('eid').hasError('required')">
-              Employee Id is required.
-            </div>
-            <div *ngIf="form.get('eid').hasError('pattern')">
-                Employee Id must contain only numeric values.
-            </div>
-            <div *ngIf="form.get('eid').hasError('minlength')">
-                Employee Id must contain 4 digits.
-            </div>
+        <div *ngIf="form.get('eid').hasError('required')">
+          Employee Id is required.
         </div>
-  <button class="btn btn-primary" type="submit" name="button" [disabled]="form.invalid">Add User</button>
-</form>
-</div>
+        <div *ngIf="form.get('eid').hasError('pattern')">
+          Employee Id must contain only numeric values.
+        </div>
+        <div *ngIf="form.get('eid').hasError('minlength')">
+          Employee Id must contain 4 digits.
+        </div>
+      </div>
+      <button class="btn btn-primary registerbtn" type="submit" name="button" [disabled]="form.invalid">Add User</button>
+    </form>
+  </div>
 </div>

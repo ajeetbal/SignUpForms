@@ -27,3 +27,11 @@
 {
     width:50%;
 }
+.card{
+    padding-left: 200px;
+    height: 600px;
+}
+.card-title{
+    text-transform: uppercase;
+    font-weight: bold;
+}

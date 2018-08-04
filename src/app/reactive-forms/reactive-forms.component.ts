@@ -13,7 +13,9 @@ import { StoreService } from '../store.service';
 export class ReactiveFormsComponent implements OnInit {
   userList:User[]=[];
   user;
-  toggle:string='password';
+  
+  toggle2:string='password';
+  toggle1:string='password';
   gender=['Male','Female'];
   form: FormGroup;
   constructor(private store:StoreService,private routes:Router) { }
@@ -26,15 +28,24 @@ export class ReactiveFormsComponent implements OnInit {
     
   }
  
-  togglePasswordMode() {   
-    if(this.toggle=='password')
+  togglePasswordMode1() {   
+    if(this.toggle1=='password')
     {
-      this.toggle='text';
+      this.toggle1='text';
     }
     else{
-      this.toggle='password';
+      this.toggle1='password';
     }
  }
+ togglePasswordMode2() {   
+  if(this.toggle2=='password')
+  {
+    this.toggle2='text';
+  }
+  else{
+    this.toggle2='password';
+  }
+}
 
 
 

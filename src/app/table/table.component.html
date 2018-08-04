@@ -1,20 +1,26 @@
-
-<table id="customers">
-  <th>First Name</th>
-  <th>Last Name</th>
-  <th>EmployeeId</th>
-  <th>Password</th>
-  <th>Contact</th>
-  <th>Gender</th>
-  <tr>
-    <td>{{formvalue.firstname}}</td>
-    <td>{{formvalue.lastname}}</td>
-    <td>{{formvalue.eid}}</td>
-    <td>{{formvalue.password}}</td>
-  <td>{{formvalue.contact}}</td>
-  <td>{{formvalue.gender}}</td>
-  </tr>
-</table>
-<br>
-<button class="btn btn-info" (click)="move()" name="button" >Edit</button>
+<div class="card" style="width:700px">
+  <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
+   alt="Card image" style="width:60%">
+  <div class="card-body">
+    <h3 class="card-title">{{formvalue.firstname}} {{formvalue.lastname}}</h3>
+    <table id="customers" class="card-text" >
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>EmployeeId</th>
+      <th>Password</th>
+      <th>Contact</th>
+      <th>Gender</th>
+      <tr>
+        <td>{{formvalue.firstname}}</td>
+        <td>{{formvalue.lastname}}</td>
+        <td>{{formvalue.eid}}</td>
+        <td>{{formvalue.password}}</td>
+      <td>{{formvalue.contact}}</td>
+      <td>{{formvalue.gender}}</td>
+      </tr>
+    </table>
+    <button class="btn btn-info" (click)="move()" name="button" >Edit</button>
 <button class="btn btn-success" (click)="done()" name="button" >Done</button>
+  </div>
+</div>
+
