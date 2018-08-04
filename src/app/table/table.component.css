@@ -28,6 +28,7 @@
     width:50%;
 }
 .card{
+    padding-top: 30px;
     padding-left: 200px;
     height: 600px;
 }

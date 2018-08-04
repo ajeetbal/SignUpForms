@@ -17,7 +17,6 @@ export class TableComponent implements OnInit {
      console.log(this.formvalue);
          
   }
-
 }
 move(){
 
@@ -25,7 +24,7 @@ move(){
 }
 done(){
   
-  alert('Welcome'+ this.formvalue.firstname);
+  alert('Welcome '+ this.formvalue.firstname);
 }
 
   ngOnInit() {
